@@ -1,0 +1,75 @@
+<project name="Ibis GMI" default="build" basedir=".">
+    <description>
+	Build file for Ibis GMI implementation
+    </description>
+
+    <property environment="env"/>
+
+    <property name="ibis"        location="${env.IBIS_HOME}"/>
+
+    <target name="build" description="Build Ibis GMI" depends="clean,compile">
+    </target>
+
+    <property name="src" location="src" />
+    <property name="tmp" location="tmp" />
+    <property name="lib" location="lib" />
+
+    <!-- import environment properties -->
+    <property environment="env" />
+
+    <path id="external.jars">
+	<fileset dir="${ibis}/lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <path id="default.classpath">
+	<fileset dir="${ibis}/lib">
+            <include name="*.jar" />
+        </fileset>
+        <pathelement path="${tmp}" />
+    </path>
+
+    <!--
+    Compile ibis GMI
+    -->
+    <target name="compile">
+        <mkdir dir="${tmp}" />
+        <mkdir dir="${lib}" />
+
+        <!-- Compile the java code from ${src} into ${tmp} -->
+        <javac srcdir="${src}" destdir="${tmp}" debug="on">
+            <classpath refid="external.jars" />
+        </javac>
+
+        <!-- Run Ibisc -->
+        <java classname="ibis.frontend.Ibisc" taskname="Ibisc" failonerror="true" dir="${tmp}" maxmemory="512m" fork="true">
+            <arg line="." />
+            <classpath refid="default.classpath" />
+        </java>
+
+        <!-- Create jar file -->
+
+        <jar destfile="lib/gmi.jar" basedir="${tmp}" includes="**/*.class">
+	    <manifest>
+		<attribute name="Ibisc-Component" value="ibis.gmi.frontend.Gmic" />
+	    </manifest>
+        </jar>
+
+        <!-- Copy external libraries to lib directory -->
+        <copy todir="${lib}">
+	    <fileset dir="${ibis}/lib" />
+        </copy>
+
+        <delete dir="${tmp}" />
+    </target>
+
+    <!--
+       Clean up everything
+    -->
+    <target name="clean" description="Clean up">
+        <delete dir="${tmp}" />
+        <delete dir="${lib}" />
+    </target>
+
+</project>
