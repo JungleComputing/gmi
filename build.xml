@@ -3,26 +3,20 @@
 	Build file for Ibis GMI implementation
     </description>
 
+    <!-- Import environment properties -->
     <property environment="env"/>
-
     <property name="ibis"        location="${env.IBIS_HOME}"/>
 
-    <target name="build" description="Build Ibis GMI" depends="clean,compile">
-    </target>
+    <target name="build"
+	    description="Build Ibis GMI"
+	    depends="clean,compile,javadoc"/>
 
     <property name="src" location="src" />
     <property name="tmp" location="tmp" />
     <property name="lib" location="lib" />
+    <property name="javadoc" location="javadoc" />
 
-    <!-- import environment properties -->
-    <property environment="env" />
-
-    <path id="external.jars">
-	<fileset dir="${ibis}/lib">
-            <include name="*.jar" />
-        </fileset>
-    </path>
-
+    <!-- Classpath -->
     <path id="default.classpath">
 	<fileset dir="${ibis}/lib">
             <include name="*.jar" />
@@ -30,16 +24,14 @@
         <pathelement path="${tmp}" />
     </path>
 
-    <!--
-    Compile ibis GMI
-    -->
+    <!-- Compile ibis GMI -->
     <target name="compile">
         <mkdir dir="${tmp}" />
         <mkdir dir="${lib}" />
 
         <!-- Compile the java code from ${src} into ${tmp} -->
         <javac srcdir="${src}" destdir="${tmp}" debug="on">
-            <classpath refid="external.jars" />
+            <classpath refid="default.classpath" />
         </javac>
 
         <!-- Run Ibisc -->
@@ -49,27 +41,42 @@
         </java>
 
         <!-- Create jar file -->
-
-        <jar destfile="lib/gmi.jar" basedir="${tmp}" includes="**/*.class">
+	<jar destfile="${lib}/gmi.jar" basedir="${tmp}" includes="**/*.class">
 	    <manifest>
 		<attribute name="Ibisc-Component" value="ibis.gmi.frontend.Gmic" />
 	    </manifest>
         </jar>
+        <delete dir="${tmp}" />
 
         <!-- Copy external libraries to lib directory -->
         <copy todir="${lib}">
 	    <fileset dir="${ibis}/lib" />
         </copy>
 
-        <delete dir="${tmp}" />
     </target>
 
-    <!--
-       Clean up everything
-    -->
+    <!-- Generate javadoc -->
+    <target name="javadoc"
+        description="generate all javadocs">
+	<javadoc
+		destdir="${javadoc}"
+		access="public"
+		classpathref="default.classpath"
+		packagenames="*"
+		sourcepath="${src}"
+		overview="src/overview.html"
+		windowtitle="Ibis GMI Documentation"
+		doctitle="Ibis GMI Documentation"
+		bottom="The Ibis project">
+	    <link href="http://java.sun.com/j2se/1.5.0/docs/api/"/>
+        </javadoc>
+    </target>
+
+    <!-- Clean up everything -->
     <target name="clean" description="Clean up">
         <delete dir="${tmp}" />
         <delete dir="${lib}" />
+	<delete dir="${javadoc}" />
     </target>
 
 </project>
