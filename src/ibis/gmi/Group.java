@@ -162,7 +162,7 @@ public final class Group implements GroupProtocol {
             }
 
             IbisCapabilities reqprops = new IbisCapabilities(
-                IbisCapabilities.CLOSEDWORLD,
+                IbisCapabilities.CLOSED_WORLD,
                 IbisCapabilities.ELECTIONS_STRICT);
 
             // Create the four port types used in GMI  
