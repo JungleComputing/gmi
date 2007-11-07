@@ -2,8 +2,8 @@
 
 package ibis.gmi.frontend;
 
-import ibis.frontend.IbiscComponent;
-import ibis.frontend.util.BT_Analyzer;
+import ibis.compile.IbiscComponent;
+import ibis.compile.util.BT_Analyzer;
 
 import java.io.File;
 import java.io.FileOutputStream;
