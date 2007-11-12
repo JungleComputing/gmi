@@ -58,7 +58,7 @@
         </copy>
 
         <path id="default.classpath">
-            <fileset dir="${ibis}/lib">
+            <fileset dir="${lib}">
                 <include name="*.jar" />
             </fileset>
             <pathelement path="${tmp}" />
@@ -99,7 +99,6 @@
                  classpathref="default.classpath"
                  packagenames="*"
                  sourcepath="${src}"
-                 overview="src/overview.html"
                  windowtitle="Ibis ${ant.project.name} Documentation"
                  doctitle="Ibis ${ant.project.name} Documentation"
                  bottom="The Ibis project">
