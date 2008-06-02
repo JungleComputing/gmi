@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# This script is a convenience script to start the Ibis GMI registry server
+# from the GMI installation, specified in the $GMI_HOME environment variable.
+
+# Check GMI_HOME.
+if [ -z "$GMI_HOME" ];  then
+    echo "please set GMI_HOME to the location of your Ibis GMI installation" 1>&2
+    exit 1
+fi
+
+exec "$GMI_HOME"/bin/gmi-run -Xmx256M ibis.server.Server "$@"

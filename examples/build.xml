@@ -1,0 +1,69 @@
+<project
+    name="GMI apps"
+    default="jar"
+    basedir=".">
+
+    <description>
+	Ibis GMI examples build.
+    </description>
+
+    <property name="gmi"         location=".."/>
+
+    <property name="tmp"         value="tmp"/>
+    <property name="lib"         value="lib"/>
+
+    <target name="init">
+        <tstamp />
+        <mkdir dir="${tmp}" />
+        <mkdir dir="${lib}" />
+	<path id="default.classpath">
+	    <pathelement path="${tmp}"/>
+	    <fileset dir="${gmi}/lib">
+		<include name="*.jar"/>
+	    </fileset>
+	</path>
+	<echo	message="Now set default.classpath to ${default.classpath}"
+		level="verbose"/>
+    </target>
+
+    <target name="compile" depends="clean,init"
+	    description="Compile application without any bytecode rewriting">
+	    <javac destdir="${tmp}" debug="true" srcdir="src" source="1.5"
+		target="1.5">
+	    <classpath refid="default.classpath" />
+	    <!--
+	    <compilerarg value="-Xlint:unchecked"/>
+	    -->
+            <include name="**/*.java" />
+        </javac>
+    </target>
+
+    <target name="gmic">
+	<java   classname="ibis.compile.Ibisc"
+		taskname="Ibisc"
+		failonerror="true"
+		dir="${tmp}"
+		fork="true">
+		<arg line="-gmi ."/>
+	    <classpath refid="default.classpath"/>
+	</java>
+    </target>
+
+    <target name="build"
+	description="Compile Ibis GMI examples for parallel execution"
+	depends="compile,gmic"/>
+
+    <target name="jar" depends="build"
+	    description="Build a Jar file for an application">
+        <basename file="." property="application-name" />
+	<jar destfile="${lib}/gmi-examples.jar" basedir="${tmp}" includes="**/*.class">
+        </jar>
+        <delete dir="${tmp}" />
+    </target>
+
+    <target name="clean" description="Clean up the build">
+        <delete dir="${tmp}" />
+	<delete dir="${lib}" />
+    </target>
+
+</project>
