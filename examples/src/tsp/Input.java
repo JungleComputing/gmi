@@ -3,7 +3,11 @@
 package tsp;
 
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * The Input object enables input like in Pascal. 
@@ -296,7 +300,7 @@ public class Input {
     }
 
     protected void skipWhiteSpace() {
-        while (Character.isSpace(nextChar())) {
+        while (Character.isWhitespace(nextChar())) {
             readChar();
         }
     }

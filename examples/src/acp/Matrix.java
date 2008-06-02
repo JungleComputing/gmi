@@ -2,7 +2,7 @@
 
 package acp;
 
-import ibis.gmi.*;
+import ibis.gmi.GroupMember;
 
 class Matrix extends GroupMember implements i_Matrix {
 

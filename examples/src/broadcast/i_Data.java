@@ -3,7 +3,7 @@
 package broadcast;
 
 
-import ibis.gmi.*;
+import ibis.gmi.GroupInterface;
 
 interface i_Data extends GroupInterface {
     void done(double result);

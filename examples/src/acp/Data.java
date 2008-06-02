@@ -2,7 +2,7 @@
 
 package acp;
 
-import ibis.gmi.*;
+import ibis.gmi.GroupMember;
 
 class Data extends GroupMember implements i_Data {
 

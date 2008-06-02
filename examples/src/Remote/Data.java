@@ -3,9 +3,11 @@
 package Remote;
 
 
-import java.io.*;
+import java.io.Serializable;
 
 class Data implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     double value;
 

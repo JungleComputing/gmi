@@ -1070,7 +1070,6 @@ public final class Group implements GroupProtocol {
      * of combined invocation.
      */
     public static void exit() {
-        // TODO: Remove the information that is registered in the registry???
         try {
 
             if (_rank == 0) {

@@ -3,6 +3,9 @@
 package tsp;
 
 public class Job implements java.io.Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     int[] path = null;
 
     int length;

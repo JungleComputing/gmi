@@ -4,6 +4,8 @@ package acp;
 
 class Constraints implements java.io.Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     Relation[][] cons;
 
     int dimension;

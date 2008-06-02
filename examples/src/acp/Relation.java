@@ -4,6 +4,8 @@ package acp;
 
 class Relation implements java.io.Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     boolean rel[][];
 
     int dimension;

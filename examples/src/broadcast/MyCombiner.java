@@ -3,8 +3,8 @@
 package broadcast;
 
 
-import ibis.gmi.ParameterVector;
 import ibis.gmi.FlatInvocationCombiner;
+import ibis.gmi.ParameterVector;
 
 public class MyCombiner extends FlatInvocationCombiner {
 

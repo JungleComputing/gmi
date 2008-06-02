@@ -3,9 +3,12 @@
 package QR;
 
 
-import java.io.*;
+import java.io.Serializable;
 
 class PivotElt implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     double norm;
 
     double max_over_max_cols;

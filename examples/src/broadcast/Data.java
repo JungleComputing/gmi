@@ -3,7 +3,7 @@
 package broadcast;
 
 
-import ibis.gmi.*;
+import ibis.gmi.GroupMember;
 
 public class Data extends GroupMember implements i_Data {
 

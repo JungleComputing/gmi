@@ -4,6 +4,7 @@ package tsp;
 
 public class DistanceTable implements java.io.Serializable {
 
+    private static final long serialVersionUID = 1L;
     private int[][] table;
 
     public DistanceTable(int size) {

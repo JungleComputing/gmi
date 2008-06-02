@@ -3,7 +3,11 @@
 package fft;
 
 
-import ibis.gmi.*;
+import ibis.gmi.Group;
+import ibis.gmi.GroupMember;
+import ibis.gmi.GroupMethod;
+import ibis.gmi.ReturnReply;
+import ibis.gmi.SingleInvocation;
 
 class Slave extends GroupMember implements i_Slave {
 
@@ -16,8 +20,6 @@ class Slave extends GroupMember implements i_Slave {
     private double[] u, u2;
 
     private int[][] ind1, ind2;
-
-    private long transposeAndFFT, fftDuration, totalComDuration, barDuration;
 
     private Matrix[] matrixArray;
 
@@ -42,11 +44,6 @@ class Slave extends GroupMember implements i_Slave {
         this.u = u;
         this.u2 = u2;
         this.distribution = dis;
-
-        transposeAndFFT = 0;
-        fftDuration = 0;
-        totalComDuration = 0;
-        barDuration = 0;
     }
 
     public void setGroup(i_Slave group, int cpu) {

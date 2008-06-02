@@ -3,13 +3,16 @@
 package Generic;
 
 
-import ibis.gmi.Group;
-import ibis.gmi.GroupMethod;
-import ibis.gmi.CombineReply;
-import ibis.gmi.GroupInvocation;
 import ibis.gmi.BinomialCombiner;
+import ibis.gmi.CombineReply;
+import ibis.gmi.Group;
+import ibis.gmi.GroupInvocation;
+import ibis.gmi.GroupMethod;
 
 class Adder extends BinomialCombiner {
+
+    private static final long serialVersionUID = 1L;
+
     public int combine(int rank1, int result1, int rank2, int result2, int size) {
         return result1 + result2;
     }

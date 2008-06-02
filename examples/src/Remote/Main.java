@@ -3,7 +3,11 @@
 package Remote;
 
 
-import ibis.gmi.*;
+import ibis.gmi.ConfigurationException;
+import ibis.gmi.DiscardReply;
+import ibis.gmi.Group;
+import ibis.gmi.GroupInvocation;
+import ibis.gmi.GroupMethod;
 
 class Main {
 

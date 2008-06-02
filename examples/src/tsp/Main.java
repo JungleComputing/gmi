@@ -3,7 +3,12 @@
 package tsp;
 
 
-import ibis.gmi.*;
+import ibis.gmi.CombinedInvocation;
+import ibis.gmi.Group;
+import ibis.gmi.GroupInvocation;
+import ibis.gmi.GroupMethod;
+import ibis.gmi.ReturnReply;
+import ibis.gmi.SingleInvocation;
 
 class Main {
 

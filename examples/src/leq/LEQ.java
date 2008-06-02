@@ -2,9 +2,6 @@
 
 package leq;
 
-
-import java.io.*;
-
 class LEQ {
 
     DoubleVector x_val;

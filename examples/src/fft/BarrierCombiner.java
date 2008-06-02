@@ -3,7 +3,8 @@
 package fft;
 
 
-import ibis.gmi.*;
+import ibis.gmi.FlatInvocationCombiner;
+import ibis.gmi.ParameterVector;
 
 public class BarrierCombiner extends FlatInvocationCombiner {
 

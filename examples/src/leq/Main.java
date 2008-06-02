@@ -2,9 +2,11 @@
 
 package leq;
 
-
-import java.io.*;
-import ibis.gmi.*;
+import ibis.gmi.CombinedInvocation;
+import ibis.gmi.DiscardReply;
+import ibis.gmi.Group;
+import ibis.gmi.GroupInvocation;
+import ibis.gmi.GroupMethod;
 
 class Main {
 

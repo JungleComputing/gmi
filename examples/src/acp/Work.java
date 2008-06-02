@@ -3,7 +3,7 @@
 
 package acp;
 
-import ibis.gmi.*;
+import ibis.gmi.GroupMember;
 
 public class Work extends GroupMember implements i_Work {
 

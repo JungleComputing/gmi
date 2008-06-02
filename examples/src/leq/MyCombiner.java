@@ -3,7 +3,8 @@
 package leq;
 
 
-import ibis.gmi.*;
+import ibis.gmi.FlatInvocationCombiner;
+import ibis.gmi.ParameterVector;
 
 public class MyCombiner extends FlatInvocationCombiner {
 
