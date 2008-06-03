@@ -78,6 +78,7 @@
     <target name="clean">
 	<delete dir="${tmp}"/>
 	<delete file="usersguide.pdf"/>
+	<delete file="progman.pdf"/>
     </target>
 
 </project>
