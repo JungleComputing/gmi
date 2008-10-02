@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Hashtable;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The group registry keeps track of which groups there are, and deals with
@@ -19,7 +20,7 @@ import org.apache.log4j.Logger;
 final class GroupRegistry implements GroupProtocol {
 
     private static Logger logger
-            = Logger.getLogger(GroupRegistry.class.getName());
+            = LoggerFactory.getLogger(GroupRegistry.class.getName());
 
     /** Hash table for the groups. */
     private Hashtable<String, GroupRegistryData> groups;
@@ -683,7 +684,7 @@ final class GroupRegistry implements GroupProtocol {
 
         } catch (Exception e) {
             /* TODO: is this a good way to deal with an exception? */
-            logger.fatal(Group._rank + ": Error in GroupRegistry ", e);            
+            logger.error(Group._rank + ": fatal error in GroupRegistry ", e);            
             System.exit(1);
         }
     }

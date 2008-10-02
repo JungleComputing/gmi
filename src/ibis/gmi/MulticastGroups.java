@@ -11,11 +11,12 @@ import ibis.ipl.WriteMessage;
 
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class MulticastGroups {
     
-    public static Logger logger = Logger.getLogger(Group.class.getName());
+    public static Logger logger = LoggerFactory.getLogger(Group.class.getName());
     
     private static final HashMap<String, ReceivePort> receivePorts
             = new HashMap<String, ReceivePort>();    
@@ -46,8 +47,8 @@ class MulticastGroups {
             synchronized (receivePorts) {
                 if (receivePorts.containsKey(id)) { 
 //                  should never happen -- internal error ?
-                    Group.logger.fatal(Group._rank 
-                        + ": MulticastGroup.handleCreateMulticastReceivePort()"
+                    Group.logger.error(Group._rank 
+                        + ": (FATAL) MulticastGroup.handleCreateMulticastReceivePort()"
                         + " - : Attempt to create duplicate group " + id);
                 }
             }
@@ -84,8 +85,8 @@ class MulticastGroups {
             }            
             
         } catch (Exception e) {
-            logger.fatal(Group._rank + 
-                    ": MulticastGroup.handleCreateMulticastReceivePort()"
+            logger.error(Group._rank + 
+                    ": (FATAL) MulticastGroup.handleCreateMulticastReceivePort()"
                     + " - : Got an exception ", e);           
         }
     }
@@ -105,8 +106,8 @@ class MulticastGroups {
             }            
             
         } catch (Exception e) {
-            logger.fatal(Group._rank + 
-                    ": MulticastGroup.handleCreateMulticastReceivePortReply()"
+            logger.error(Group._rank + 
+                    ": (FATAL) MulticastGroup.handleCreateMulticastReceivePortReply()"
                     + " - : Got an exception ", e);           
         }        
     }     
@@ -218,8 +219,8 @@ class MulticastGroups {
             return sp;
             
         } catch (Exception e) {
-            logger.fatal(Group._rank + 
-                    ": MulticastGroup.getMulticastSendPort()"
+            logger.error(Group._rank + 
+                    ": (FATAL) MulticastGroup.getMulticastSendPort()"
                     + " - : Got an exception", e);           
         }     
         

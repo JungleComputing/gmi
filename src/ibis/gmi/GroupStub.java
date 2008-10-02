@@ -9,7 +9,8 @@ import ibis.util.Ticket;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The {@link GroupStub} class provides a base class for generated stubs.
@@ -19,7 +20,7 @@ import org.apache.log4j.Logger;
 public class GroupStub implements GroupInterface, GroupProtocol {
 
     protected static Logger logger
-            = Logger.getLogger(GroupStub.class.getName());
+            = LoggerFactory.getLogger(GroupStub.class.getName());
 
     /** The identification of the target group. */
     protected int groupID;

@@ -8,7 +8,8 @@ import ibis.ipl.WriteMessage;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The {@link GroupSkeleton} class serves as a base class for generated
@@ -18,7 +19,7 @@ import org.apache.log4j.Logger;
 public abstract class GroupSkeleton implements GroupProtocol {
 
     protected static Logger logger
-            = Logger.getLogger(GroupSkeleton.class.getName());
+            = LoggerFactory.getLogger(GroupSkeleton.class.getName());
 
     /** Indicates the group member for which this is the skeleton. */
     protected GroupMember destination;

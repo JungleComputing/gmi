@@ -21,10 +21,14 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.StringTokenizer;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.WriterAppender;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The {@link Group} class takes care of the startup, and has methods
@@ -32,20 +36,7 @@ import org.apache.log4j.WriterAppender;
  */
 public final class Group implements GroupProtocol {
 
-    static {
-        Logger ibisLogger = Logger.getLogger("ibis");
-        Logger rootLogger = Logger.getRootLogger();
-        if (! rootLogger.getAllAppenders().hasMoreElements()
-             && !ibisLogger.getAllAppenders().hasMoreElements()) {
-            // No appenders defined, print to standard err by default
-            PatternLayout layout = new PatternLayout("%d{HH:mm:ss} %-5p %m%n");
-            WriterAppender appender = new WriterAppender(layout, System.err);
-            ibisLogger.addAppender(appender);
-            ibisLogger.setLevel(Level.WARN);
-        }
-    }
-
-    static Logger logger = Logger.getLogger(Group.class.getName());
+    static Logger logger = LoggerFactory.getLogger(Group.class.getName());
      
     /** Ibis rank number in this run. */
     static int _rank;
@@ -348,7 +339,7 @@ public final class Group implements GroupProtocol {
             /* End of 1.3-specific code */
 
         } catch (Exception e) {
-            logger.fatal(name + ": Could not init Group RTS " + e, e);
+            logger.error(name + ": (FATAL) Could not init Group RTS " + e, e);
             System.exit(1);
         }
     }
@@ -397,7 +388,7 @@ public final class Group implements GroupProtocol {
                 temp = portType.createSendPort("Multicast on " + name + " to "
                         + ID);
             } catch (IOException e) {
-                logger.fatal(name + ": Could not create multicast group "
+                logger.error(name + ": (FATAL) Could not create multicast group "
                         + ID + " " + e, e);
                 System.exit(1);
             }
@@ -412,8 +403,8 @@ public final class Group implements GroupProtocol {
                     }
                 }
             } catch (IOException e) {
-                logger.fatal(name
-                        + ": Could not interconnect multicast group " + ID
+                logger.error(name
+                        + ": (FATAL) Could not interconnect multicast group " + ID
                         + " " + e, e);
                 System.exit(1);
             }
@@ -668,7 +659,7 @@ public final class Group implements GroupProtocol {
                     break;
                     
                 default:
-                    logger.fatal(_rank + "Internal error: join(" + 
+                    logger.error(_rank + ": (FATAL) join(" + 
                             nm + ") Failed - Got illegal opcode");
                     System.exit(1);
                 }

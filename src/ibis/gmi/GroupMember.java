@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * To be part of a group, an object must implement the {@link GroupInterface}
@@ -17,7 +18,7 @@ public class GroupMember {
     public int groupID;
 
     protected static Logger logger
-            = Logger.getLogger(GroupMember.class.getName());
+            = LoggerFactory.getLogger(GroupMember.class.getName());
 
     /** Skeleton identifications of all group members. */
     public int[] memberSkels;
@@ -121,7 +122,7 @@ public class GroupMember {
             }
 
         } catch (Exception e) {
-            logger.fatal(Group._rank +": constructor() could not init ", e);
+            logger.error(Group._rank +": (FATAL) constructor() could not init ", e);
             System.exit(1);
         }
 
