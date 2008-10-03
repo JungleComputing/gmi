@@ -112,7 +112,7 @@ class GMIStubGenerator extends GMIGenerator {
 
         output.println(spacing + "\tdefault:");
         output.println(spacing
-                + "\t\tlogger.fatal(Group.rank() + \"OOPS : group_stub got illegal "
+                + "\t\tlogger.error(Group.rank() + \": (FATAL) group_stub got illegal "
                 + "opcode\");");
         output.println(spacing + "\t\tSystem.exit(1);");
         output.println(spacing + "\t\tbreak;");
@@ -120,7 +120,7 @@ class GMIStubGenerator extends GMIGenerator {
 
         output.println(spacing + "} catch (Exception e) {");
         output.println(spacing
-                + "\tlogger.fatal(Group.rank() + \"OOPS : group_stub got exception\", e);");
+                + "\tlogger.error(Group.rank() + \": (FATAL) group_stub got exception\", e);");
         output.println(spacing + "\tSystem.exit(1);");
         output.println(spacing + "\t");
         output.println(spacing + "}");
