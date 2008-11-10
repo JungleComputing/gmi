@@ -114,7 +114,7 @@ public final class Group implements GroupProtocol {
          * The stub class for this group, so that stubs can easily be
          * created.
          */
-        Class stubClass;
+        Class<?> stubClass;
 
         /** The group identification. */
         int groupID;
@@ -500,7 +500,7 @@ public final class Group implements GroupProtocol {
      * @exception RuntimeException when the group already exists or in case
      * of a communication error.
      */
-    public static void create(String nm, Class type, int size)
+    public static void create(String nm, Class<?> type, int size)
             throws RuntimeException {
 
         try {

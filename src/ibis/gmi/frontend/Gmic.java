@@ -69,7 +69,7 @@ public class Gmic extends IbiscComponent {
         return "[-gmi]";
     }
 
-    public void process(Iterator iter) {
+    public void process(Iterator<?> iter) {
         if (! gmicEnabled) {
             return;
         }

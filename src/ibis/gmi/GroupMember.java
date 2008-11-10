@@ -63,7 +63,7 @@ public class GroupMember {
         try {
             String my_package = "";
 
-            Class myClass = this.getClass();
+            Class<?> myClass = this.getClass();
 
             String temp = myClass.getName();
             StringTokenizer s = new StringTokenizer(temp, ".");
@@ -91,12 +91,12 @@ public class GroupMember {
                 logger.debug(Group._rank +": constructor() skelID is " + mySkel);
             }
 
-            Vector<Class> group_interfaces = new Vector<Class>();
+            Vector<Class<?>> group_interfaces = new Vector<Class<?>>();
 
-            Class tempClass = myClass;
+            Class<?> tempClass = myClass;
 
             while (tempClass != null) {
-                Class[] interfaces = tempClass.getInterfaces();
+                Class<?>[] interfaces = tempClass.getInterfaces();
 
                 for (int i = 0; i < interfaces.length; i++) {
                     if (isGroupInterface(interfaces[i])
@@ -137,13 +137,13 @@ public class GroupMember {
      * @param inter the class to be examined
      * @return true if it is or implements the group interface.
      */
-    private boolean isGroupInterface(Class inter) {
+    private boolean isGroupInterface(Class<?> inter) {
 
         if (inter == ibis.gmi.GroupInterface.class) {
             return true;
         }
 
-        Class[] parents = inter.getInterfaces();
+        Class<?>[] parents = inter.getInterfaces();
 
         for (int i = 0; i < parents.length; i++) {
             if (isGroupInterface(parents[i])) {
