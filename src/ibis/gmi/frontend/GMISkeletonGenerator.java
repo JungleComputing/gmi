@@ -422,7 +422,7 @@ class GMISkeletonGenerator extends GMIGenerator {
         return result;
     }
 
-    void messageHandler(String spacing, Vector methods) {
+    void messageHandler(String spacing, Vector<Method> methods) {
 
         output.println(spacing
                 + "public final void handleMessage(int invocationMode, "
@@ -434,7 +434,7 @@ class GMISkeletonGenerator extends GMIGenerator {
         output.println(spacing + "\tswitch(method) {");
 
         for (int i = 0; i < methods.size(); i++) {
-            Method m = (Method) methods.get(i);
+            Method m = methods.get(i);
             
             String methodName = getUniqueMethodName(m);
             
@@ -464,9 +464,9 @@ class GMISkeletonGenerator extends GMIGenerator {
                 + "() {}");
     }
 
-    void body(String spacing, Vector methods) {
+    void body(String spacing, Vector<Method> methods) {
         for (int i = 0; i < methods.size(); i++) {
-            methodHandler(spacing, (Method) methods.get(i));
+            methodHandler(spacing, methods.get(i));
         }
     }
 

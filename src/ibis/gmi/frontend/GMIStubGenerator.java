@@ -685,7 +685,7 @@ class GMIStubGenerator extends GMIGenerator {
         output.println(" {\n");
     }
 
-    void constructor(Vector methods) {
+    void constructor(Vector<Method> methods) {
 
         output.println("\tpublic group_stub_" + data.classname + "() {");
 
@@ -694,7 +694,7 @@ class GMIStubGenerator extends GMIGenerator {
 
         for (int i = 0; i < methods.size(); i++) {
 
-            Method m = (Method) methods.get(i);
+            Method m = methods.get(i);
 
             Type ret = m.getReturnType();
             Type[] params = m.getArgumentTypes();
@@ -726,10 +726,10 @@ class GMIStubGenerator extends GMIGenerator {
         output.println("\t}\n");
     }
 
-    void body(Vector methods) {
+    void body(Vector<Method> methods) {
 
         for (int i = 0; i < methods.size(); i++) {
-            Method m = (Method) methods.get(i);
+            Method m = methods.get(i);
 
             methodHeader(m);
             methodBody("\t\t", m, i);
