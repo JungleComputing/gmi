@@ -48,7 +48,7 @@ its subdirectories are processed.  The command sequence
 $ cd $GMI_HOME/examples
 $ mkdir tmp
 $ javac -d tmp -g \
-     -classpath ../lib/gmi-2.1.jar \
+     -classpath ../lib/gmi-2.2.jar \
      src/*/*.java
 $ ../bin/gmic -cp tmp tmp
 $ mkdir lib
@@ -138,7 +138,7 @@ with the \texttt{ibis.properties.file} system property.
 \subsubsection{Add jar files to the classpath}
 
 The Ibis GMI implementation is provided in a single jar file: gmi.jar,
-appended with the version of Ibis GMI, for instance \texttt{gmi-2.1.jar}.
+appended with the version of Ibis GMI, for instance \texttt{gmi-2.2.jar}.
 Ibis GMI interfaces to Ibis using the Ibis Portability Layer, or
 \emph{IPL}. Both Ibis GMI and the IPL depend on various other libraries.
 All jar files in \$GMI\_HOME/lib need to be on the classpath.
