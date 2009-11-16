@@ -16,6 +16,6 @@ goto setupArgs
 
 :doneStart
 
-java -classpath "%CLASSPATH%;%GMI_HOME\lib\*" -Dlog4j.configuration=file:"%GMI_HOME%"\log4j.properties %GMI_APP_ARGS%
+java -classpath "%CLASSPATH%;%GMI_HOME%\lib\*" -Dlog4j.configuration=file:"%GMI_HOME%"\log4j.properties %GMI_APP_ARGS%
 
 if "%OS%"=="Windows_NT" @endlocal
