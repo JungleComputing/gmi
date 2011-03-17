@@ -26,9 +26,9 @@ public class Gmic extends IbiscComponent {
     private ArrayList<String> javaFiles = new ArrayList<String>();
 
     public Gmic() {
-        groupInterface = Repository.lookupClass("ibis.gmi.GroupInterface");
-
-        if (groupInterface == null) {
+        try {
+            groupInterface = Repository.lookupClass("ibis.gmi.GroupInterface");
+        } catch(ClassNotFoundException e) {
             System.err.println("Class ibis.gmi.GroupInterface not found");
             System.exit(1);
         }
@@ -160,12 +160,12 @@ public class Gmic extends IbiscComponent {
                     name = name.substring(0, name.length()-6).replace(File.separatorChar, '.');
                 }
 
-                JavaClass c = Repository.lookupClass(name);
-                if (c == null) {
+                try {
+                    classes.add(Repository.lookupClass(name));
+                } catch(ClassNotFoundException e) {
                     System.err.println("Class " + name + " not found");
                     System.exit(1);
                 }
-                classes.add(c);
             }
         }
 
