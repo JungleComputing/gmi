@@ -13,7 +13,7 @@ class Adder extends BinomialCombiner {
 
     private static final long serialVersionUID = 1L;
 
-    public int combine(int rank1, int result1, int rank2, int result2, int size) {
+    public int combine(int rank1, int result1, Exception e1, int rank2, int result2, Exception e2, int size) {
         return result1 + result2;
     }
 }
