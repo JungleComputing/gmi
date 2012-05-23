@@ -2,8 +2,6 @@
 
 package ibis.gmi.frontend;
 
-import ibis.compile.util.BT_Analyzer;
-
 import java.io.PrintWriter;
 import java.util.Vector;
 
