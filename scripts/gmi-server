@@ -9,4 +9,4 @@ if [ -z "$GMI_HOME" ];  then
     exit 1
 fi
 
-exec "$GMI_HOME"/bin/gmi-run -Xmx256M ibis.ipl.server.Server "$@"
+exec "$GMI_HOME"/scripts/gmi-run -Xmx256M ibis.ipl.server.Server "$@"

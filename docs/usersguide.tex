@@ -39,7 +39,7 @@ your application, or you have only class files or jar files available
 for parts of your application, it is also possible to first compile
 your application to class files or jar files, and then process those
 using the \emph{gmic} script. This script can be found in the Ibis GMI
-bin directory. It takes either directories, class files, or jar files
+scripts directory. It takes either directories, class files, or jar files
 as parameter, and processes those, possibly rewriting them. In case
 of a directory, all class files and jar files in that directory or
 its subdirectories are processed.  The command sequence
@@ -50,7 +50,7 @@ $ mkdir tmp
 $ javac -d tmp -g \
      -classpath ../lib/gmi-2.2.jar \
      src/*/*.java
-$ ../bin/gmic -cp tmp tmp
+$ ../scripts/gmic -cp tmp tmp
 $ mkdir lib
 $ ( cd tmp ; jar c . ) > lib/gmi-examples.jar
 $ rm -rf tmp
@@ -90,7 +90,7 @@ possible between two instances due to firewalls or NAT boxes. This is
 done using the Smartsockets library of the Ibis project.
 
 The Ibis server is started with the \texttt{gmi-server} script which is
-located in the \texttt{bin} directory of the Ibis GMI distribution.  Before
+located in the \texttt{scripts} directory of the Ibis GMI distribution.  Before
 starting an Ibis GMI application, an Ibis server needs to be running on a
 machine that is accessible from all nodes participating in the Ibis GMI run.
 The server listens to a TCP port. The port number can be specified using
@@ -224,7 +224,7 @@ run the \texttt{gmi-server} script:
 \noindent
 {\small
 \begin{verbatim}
-$ $GMI_HOME/bin/gmi-server --events
+$ $GMI_HOME/scripts/gmi-server --events
 \end{verbatim}
 }
 \noindent
@@ -239,7 +239,7 @@ Run the following command in two different shells:
 {\small
 \begin{verbatim}
 $ CLASSPATH=$GMI_HOME/examples/lib/gmi-examples.jar \
-    $GMI_HOME/bin/gmi-run \
+    $GMI_HOME/scripts/gmi-run \
     -Dibis.server.address=localhost \
     -Dibis.pool.size=2 -Dibis.pool.name=test \
     tsp.Main $GMI_HOME/examples/src/tsp/table_15.1
@@ -297,7 +297,7 @@ run the \texttt{gmi-server} script:
 \noindent
 {\small
 \begin{verbatim}
-C:\DOCUME~1\Temp> "%GMI_HOME%"\bin\gmi-server --events
+C:\DOCUME~1\Temp> "%GMI_HOME%"\scripts\gmi-server --events
 \end{verbatim}
 }
 \noindent
@@ -318,7 +318,7 @@ Run the following commands in two different shells:
 \begin{verbatim}
 C:\DOCUME~1\Temp> cd %GMI_HOME%\examples
 C:...> set CLASSPATH=lib\gmi-examples.jar
-C:...> "%GMI_HOME%"\bin\gmi-run
+C:...> "%GMI_HOME%"\scripts\gmi-run
     "-Dibis.server.address=localhost"
     "-Dibis.pool.size=2" "-Dibis.pool.name=test"
     tsp.Main src\tsp\table_15.1
